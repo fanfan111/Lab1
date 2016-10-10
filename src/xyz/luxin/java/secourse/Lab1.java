@@ -34,7 +34,8 @@ public class Lab1 {
 			System.out.print(">");
 			Scanner sc = new Scanner(System.in);
 			String command = sc.nextLine();
-			System.out.println("这里是第一次修改");
+			System.out.println("这里是第一次修改和陆鑫合并后");
+
 			if ((command.toCharArray())[0] != '!') {
 				try {
 					poly = expression(command);
@@ -61,8 +62,8 @@ public class Lab1 {
 					} else {
 						poly = pTmp;
 						System.out.println(poly);
+						System.out.println("这里是对C4/B1/B2合并冲突处理过位置和陆鑫合并后");
 
-						System.out.println("这里是对C4/B1/B2合并冲突处理过位置");
 
 					}
 					continue;

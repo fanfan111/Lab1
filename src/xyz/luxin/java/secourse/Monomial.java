@@ -38,6 +38,7 @@ public class Monomial extends Expression implements Comparable<Monomial> {
 				throw new ExpressionException("Unknown Character");
 			}
 		}
+		System.out.println("存在和陆鑫合并");
 		System.out.println("这里是第一次修改");
 		System.out.println("这里是对B1的修改");
 		constVaule = 1;
@@ -46,6 +47,7 @@ public class Monomial extends Expression implements Comparable<Monomial> {
 		varIndex = new TreeMap<String, Integer>();
 		monIndex = 0;
 		System.out.println("这里是在C4上面的修改");
+
 		if (isExtraNegative) {
 			constVaule = -1;
 		}

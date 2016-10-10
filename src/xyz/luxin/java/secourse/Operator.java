@@ -8,7 +8,9 @@ public class Operator extends Expression {
 		if (op=='+' || op=='-' || op=='*' || op=='^') {
 			this.op = op;
 		} else {
-			System.out.println("这里是对B1的修改");
+
+			System.out.println("这里是对B1的修改和陆鑫合并");
+
 			throw new ExpressionException("Operator Illegal");
 		}
 	}

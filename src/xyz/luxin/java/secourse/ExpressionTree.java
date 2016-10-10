@@ -31,7 +31,9 @@ public class ExpressionTree {
 				if (t.left!=null || t.right!=null) {
 					throw new ExpressionException("Internal Error");
 				}
-				System.out.println("这里是在C4上面的修改");
+
+				System.out.println("这里是在C4上面的修改和陆鑫合并");
+
 
 				return (Polynomial)t.exp;
 			}
