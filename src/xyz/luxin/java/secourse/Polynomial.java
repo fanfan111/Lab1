@@ -170,7 +170,7 @@ public class Polynomial extends Expression {
 			Monomial mono = new Monomial(m1.group(0), false, isNegEx);
 			
 			if (mMonos.containsKey(mono)) {
-				//Map中已存在的单项式与get参数的单项式不是一个对象，两者仅系数不同
+				//Map锟斤拷锟窖达拷锟节的碉拷锟斤拷式锟斤拷get锟斤拷锟斤拷锟侥碉拷锟斤拷式锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟竭斤拷系锟斤拷锟斤拷同
 				Integer n = mMonos.get(mono);
 				mono.constVaule = mono.constVaule + n;
 				mMonos.remove(mono);
@@ -191,7 +191,7 @@ public class Polynomial extends Expression {
 			Monomial mono = new Monomial(m1.group(0), isExtraNegative, isNegEx);
 			
 			if (mMonos.containsKey(mono)) {
-				//Map中已存在的单项式与get参数的单项式不是一个对象，两者仅系数不同
+				//Map锟斤拷锟窖达拷锟节的碉拷锟斤拷式锟斤拷get锟斤拷锟斤拷锟侥碉拷锟斤拷式锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟竭斤拷系锟斤拷锟斤拷同
 				Integer n = mMonos.get(mono);
 				mono.constVaule = mono.constVaule + n;
 				mMonos.remove(mono);
@@ -220,7 +220,7 @@ public class Polynomial extends Expression {
 			Monomial m = entry.getKey().simplify(pairs);
 
 			if (result.containsKey(m)) {
-				//Map中已存在的单项式与get参数的单项式不是一个对象，两者仅系数不同
+				
 				Integer n = result.get(m);
 				m.constVaule = m.constVaule + n;
 				result.remove(m);
@@ -243,7 +243,7 @@ public class Polynomial extends Expression {
 			Monomial m = entry.getKey().derivative(var);
 			
 			if (result.containsKey(m)) {
-				//Map中已存在的单项式与get参数的单项式不是一个对象，两者仅系数不同
+				
 				Integer n = result.get(m);
 				m.constVaule = m.constVaule + n;
 				result.remove(m);
@@ -252,7 +252,6 @@ public class Polynomial extends Expression {
 				result.put(m, m.constVaule);
 			}
 		}
-
 		return new Polynomial(result);
 	}
 	
@@ -266,7 +265,7 @@ public class Polynomial extends Expression {
 			Monomial m = new Monomial(entry.getKey());
 			
 			if (result.containsKey(m)) {
-				//Map中已存在的单项式与get参数的单项式不是一个对象，两者仅系数不同
+				//Map锟斤拷锟窖达拷锟节的碉拷锟斤拷式锟斤拷get锟斤拷锟斤拷锟侥碉拷锟斤拷式锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟竭斤拷系锟斤拷锟斤拷同
 				Integer n = result.get(m);
 				m.constVaule = m.constVaule + n;
 				result.remove(m);
@@ -282,7 +281,7 @@ public class Polynomial extends Expression {
 			Monomial m = new Monomial(entry.getKey());
 
 			if (result.containsKey(m)) {
-				//Map中已存在的单项式与get参数的单项式不是一个对象，两者仅系数不同
+				//Map锟斤拷锟窖达拷锟节的碉拷锟斤拷式锟斤拷get锟斤拷锟斤拷锟侥碉拷锟斤拷式锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟竭斤拷系锟斤拷锟斤拷同
 				Integer n = result.get(m);
 				m.constVaule = m.constVaule + n;
 				result.remove(m);
@@ -309,7 +308,7 @@ public class Polynomial extends Expression {
 				Monomial m2 = m1.multiplication(p2Entry.getKey());
 
 				if (result.containsKey(m2)) {
-					//Map中已存在的单项式与get参数的单项式不是一个对象，两者仅系数不同
+					//Map锟斤拷锟窖达拷锟节的碉拷锟斤拷式锟斤拷get锟斤拷锟斤拷锟侥碉拷锟斤拷式锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟竭斤拷系锟斤拷锟斤拷同
 					Integer n = result.get(m2);
 					m2.constVaule = m2.constVaule + n;
 					result.remove(m2);

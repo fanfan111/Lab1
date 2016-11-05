@@ -6,12 +6,11 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class Lab1 {
-	
-	public static Polynomial expression(String exp) throws ExpressionException {
+	public static Polynomial poly = new Polynomial();
+	public static String expression(String exp,Polynomial poly) throws ExpressionException {
 		
-		Polynomial poly = new Polynomial();
 		poly.expressionBracket(exp);
-		return poly;
+		return poly.toString();
 	}
 	
 	public static Polynomial simplify(Polynomial poly, TreeMap<String, Integer> pairs) {
@@ -19,25 +18,29 @@ public class Lab1 {
 		return poly.simplify(pairs);
 	}
 	
-	public static Polynomial derivative(Polynomial poly, String var) {
-		
-		return poly.derivative(var);
+	public static String derivative(String polyInput, String command) 
+			throws ExpressionException {
+		String var = command.substring(5, command.length());
+		Polynomial pTmp = poly.derivative(var);
+		if (pTmp.toString().equals("0")) {
+			return "Var Not Found";
+		} else {
+			poly = pTmp;
+		}
+		return poly.toString();
 	}
 
 	@SuppressWarnings("resource")
 	public static void main(String[] args) {
-
-		Polynomial poly = new Polynomial();
+		
 		boolean isPoly = false;
-
 		while (true) {
 			System.out.print(">");
 			Scanner sc = new Scanner(System.in);
 			String command = sc.nextLine();
-			System.out.println("这里是第一次修改");
 			if ((command.toCharArray())[0] != '!') {
 				try {
-					poly = expression(command);
+					expression(command,poly);
 					System.out.println(poly);
 					isPoly = true;
 				} catch (ExpressionException e) {
@@ -54,13 +57,12 @@ public class Lab1 {
 
 			try {
 				if (command.substring(0, 5).equals("!d/d ")) {
-					String var = command.substring(5, command.length());
-					Polynomial pTmp = derivative(poly, var);
-					if (pTmp.toString().equals("0")) {
-						System.out.println("Var Not Found");
-					} else {
-						poly = pTmp;
-						System.out.println(poly);
+					try {
+						System.out.println(derivative(poly.toString(),command));
+					} catch (ExpressionException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						continue;
 					}
 					continue;
 				} else if (command.substring(0, 9).equals("!simplify")) {

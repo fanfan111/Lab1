@@ -38,7 +38,7 @@ public class Monomial extends Expression implements Comparable<Monomial> {
 				throw new ExpressionException("Unknown Character");
 			}
 		}
-		System.out.println("这里是第一次修改");
+		
 		constVaule = 1;
 		varNumber = 0;
 		varIndex = new TreeMap<String, Integer>();
@@ -144,22 +144,17 @@ public class Monomial extends Expression implements Comparable<Monomial> {
 	public Monomial derivative(String var) {
 		
 		Monomial result = new Monomial();
-
 		if (!varIndex.containsKey(var)) {
 			result.constVaule = 0;
 			return result;
-		}
-		
-		
+		}	
 		result = new Monomial(this);
-		
 		if (result.varIndex.get(var)==1) {
 			result.varIndex.remove(var);
 			result.varNumber--;
 			result.monIndex--;
 			return result;
 		}
-		
 		result.monIndex--;
 		result.constVaule = result.constVaule * result.varIndex.get(var);
 		result.varIndex.replace(var, result.varIndex.get(var)-1);
@@ -179,7 +174,7 @@ public class Monomial extends Expression implements Comparable<Monomial> {
 			int nAll = this.varIndex.get(m);
 			result1.monIndex += nAll;
 			if (result.containsKey(m)) {
-				//Map中已存在的单项式与get参数的单项式不是一个对象，两者仅系数不同
+				//Map锟斤拷锟窖达拷锟节的碉拷锟斤拷式锟斤拷get锟斤拷锟斤拷锟侥碉拷锟斤拷式锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟竭斤拷系锟斤拷锟斤拷同
 				Integer n = result.get(m);
 				nAll += n;
 				result.remove(m);
@@ -196,7 +191,7 @@ public class Monomial extends Expression implements Comparable<Monomial> {
 			int nAll = a.varIndex.get(m);
 			result1.monIndex += nAll;
 			if (result.containsKey(m)) {
-				//Map中已存在的单项式与get参数的单项式不是一个对象，两者仅系数不同
+				//Map锟斤拷锟窖达拷锟节的碉拷锟斤拷式锟斤拷get锟斤拷锟斤拷锟侥碉拷锟斤拷式锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟竭斤拷系锟斤拷锟斤拷同
 				Integer n = result.get(m);
 				nAll += n;
 				result.remove(m);

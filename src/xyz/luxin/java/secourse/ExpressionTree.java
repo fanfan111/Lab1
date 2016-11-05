@@ -21,7 +21,7 @@ public class ExpressionTree {
 			obtainPolynomial(t.right);
 			if (t.exp instanceof Operator) {
 				if (!(t.left.exp instanceof Polynomial) || !(t.right.exp instanceof Polynomial)) {
-					throw new ExpressionException("Internal Error");
+				  throw new ExpressionException("Internal Error");
 				}
 				t.exp = Polynomial.arithmetic((Polynomial)t.left.exp, (Polynomial)t.right.exp, (Operator)t.exp);
 				t.left = null;
@@ -121,6 +121,35 @@ public class ExpressionTree {
 		if (opIndex == -1) {
 			throw new ExpressionException("Format Error");
 		} else {
+		    if (chars[opIndex]=='^') {
+		      String pFactor = "((\\d+)|([a-zA-Z]+))";
+		      String pMonomial = "(\\s*(" + "(" + pFactor + "\\s*)*" + (pFactor) + ")\\s*)";
+		      p = Pattern.compile(pMonomial);
+		      m = p.matcher(expString.substring(0, opIndex));
+		      if (m.matches()) {
+		        p = Pattern.compile(pFactor);
+	            m = p.matcher(expString.substring(0, opIndex));
+	            int factorCount = 0;
+	            int newOpIndex = -1;
+	            while (m.find()) {
+	              if (++factorCount > 1) {
+	                newOpIndex = m.start();
+	              }
+	            }
+	            if (newOpIndex != -1) {
+	              t.exp = new Operator('*');
+	              t.left = new ExpressionTree();
+	              t.right = new ExpressionTree();
+	              String left = expString.substring(0, newOpIndex);
+	              String right = expString.substring(newOpIndex, expString.length());
+	            // System.out.println(left + ", " + right);
+	              createTree(t.left, left);
+	              createTree(t.right, right);
+	              return;
+	            }
+		      }
+		    }
+		  
 			t.exp = new Operator(chars[opIndex]);
 			t.left = new ExpressionTree();
 			t.right = new ExpressionTree();
